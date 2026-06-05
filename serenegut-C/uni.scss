@@ -1,0 +1,222 @@
+/* ============================================================
+ * 鸿蒙 HarmonyOS 温润暖调设计 Token 体系
+ * 哑光低透光磨砂质感 · 柔和弥散暖光晕 · 轻薄浅投影
+ * 区别 iOS 冷调高透玻璃，全局温润治愈
+ * ============================================================ */
+
+/* ---------- 品牌主色（保留暖棕 + 米白健康主题） ---------- */
+$primary-color: #8d4b00;        // 主棕
+$primary-light: #b15f00;       // 渐变终点 / 亮棕
+$primary-soft: #ffdcc3;        // 浅暖棕（背景/标签底）
+$primary-veil: rgba(141, 75, 0, 0.08);  // 主色薄纱
+$secondary-color: #9a4614;     // 次棕
+$secondary-light: #ffdbcb;
+$tertiary-color: #864d31;      // 第三棕
+
+/* ---------- 文字色阶（暖化，原 #1d1b19 偏冷） ---------- */
+$text-primary: #2a1f15;        // 主文字（暖墨棕）
+$text-secondary: #554336;      // 次文字
+$text-muted: #887364;          // 弱文字
+$text-inverse: #ffffff;        // 反色
+$text-placeholder: #b3a394;     // 占位
+
+/* ---------- 背景与磨砂底（鸿蒙哑光低透光） ---------- */
+$bg-primary: #fef8f3;          // 米白基底
+$bg-soft: #fbf2ea;             // 暖调次基底
+$bg-card: rgba(255, 249, 240, 0.82);   // 鸿蒙暖调磨砂底（高不透明度暖色）
+$bg-card-strong: #fefaf3; // 导航栏/底栏强磨砂底（不透明）
+$bg-white: #ffffff;
+$bg-veil: rgba(255, 255, 255, 0.5);     // 浅纱底（输入框/选中态）
+
+/* ---------- 鸿蒙暖调环境光基底（全局淡暖漫射） ---------- */
+$ambient-warm-1: rgba(255, 219, 203, 0.55);  // 顶部主光晕
+$ambient-warm-2: rgba(255, 220, 195, 0.40);  // 中部漫射
+$ambient-warm-3: rgba(255, 235, 215, 0.50);  // 底部余光
+$ambient-glow: rgba(177, 95, 0, 0.06);       // 暖光弥散
+
+/* ---------- 柔和弥散暖光晕（区别厚重阴影） ---------- */
+$glow-warm: rgba(141, 75, 0, 0.12);
+$glow-warm-soft: rgba(177, 95, 0, 0.10);
+$glow-warm-faint: rgba(146, 64, 14, 0.06);
+
+/* ---------- 状态色（暖化，去除冷调） ---------- */
+$danger-color: #c0533c;        // 暖红（原 #dd524d 偏冷）
+$warning-color: #d99441;       // 暖橙（原 #f0ad4e）
+$success-color: #6b9e5e;       // 暖绿（原 #4cd964 偏冷）
+$info-color: #5b8aa8;
+
+/* ---------- 鸿蒙圆润大圆角体系统一 ---------- */
+$radius-xs: 12rpx;
+$radius-sm: 16rpx;
+$radius-md: 24rpx;             // 图标容器
+$radius-lg: 32rpx;             // 输入框/中卡
+$radius-xl: 40rpx;             // 卡片
+$radius-2xl: 48rpx;            // 大卡片/按钮
+$radius-full: 9999rpx;         // 圆形
+
+/* ---------- 宽松留白间距 ---------- */
+$space-xs: 8rpx;
+$space-sm: 16rpx;
+$space-md: 24rpx;
+$space-lg: 32rpx;
+$space-xl: 48rpx;
+$space-2xl: 64rpx;
+
+/* ---------- 字号 ---------- */
+$font-size-xs: 20rpx;
+$font-size-sm: 24rpx;
+$font-size-base: 28rpx;
+$font-size-lg: 32rpx;
+$font-size-xl: 36rpx;
+$font-size-xxl: 48rpx;
+
+$font-family: "HarmonyOS Sans", "Lexend", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+/* ---------- 鸿蒙哑光磨砂质感参数 ---------- */
+$frost-blur: blur(20px) saturate(1.08);
+$frost-blur-soft: blur(14px) saturate(1.05);
+$frost-border: 1rpx solid rgba(255, 220, 195, 0.45);  // 暖色细描边（非白色高光）
+$frost-border-strong: 1rpx solid rgba(255, 220, 195, 0.6);
+
+/* ---------- 鸿蒙轻薄浅投影 + 柔光晕体系 ---------- */
+// 卡片：轻薄浅投影 + 外层弥散暖光晕（双层柔和，非厚重）
+$shadow-sm: 0 4rpx 16rpx rgba(146, 64, 14, 0.06);
+$shadow-md: 0 8rpx 32rpx rgba(146, 64, 14, 0.08);
+$shadow-card: 0 8rpx 40rpx rgba(141, 75, 0, 0.10), 0 2rpx 8rpx rgba(146, 64, 14, 0.05);
+// 悬浮卡/模态：柔和弥散暖光晕
+$shadow-float: 0 16rpx 56rpx rgba(141, 75, 0, 0.14), 0 4rpx 12rpx rgba(146, 64, 14, 0.06);
+$shadow-modal: 0 24rpx 80rpx rgba(146, 64, 14, 0.18), 0 8rpx 24rpx rgba(141, 75, 0, 0.08);
+// 按钮：暖光晕（柔和不刺眼）
+$shadow-btn: 0 8rpx 24rpx rgba(141, 75, 0, 0.20), 0 2rpx 6rpx rgba(141, 75, 0, 0.12);
+$shadow-btn-soft: 0 6rpx 20rpx rgba(141, 75, 0, 0.14);
+// 兼容旧引用
+$border-color: rgba(141, 75, 0, 0.08);
+$shadow-color: rgba(146, 64, 14, 0.06);
+
+/* ---------- 鸿蒙统一微动效 ---------- */
+$ease-harmony: cubic-bezier(0.4, 0, 0.2, 1);       // 标准缓动
+$ease-harmony-soft: cubic-bezier(0.25, 0.1, 0.25, 1); // 柔和缓动
+$ease-harmony-spring: cubic-bezier(0.34, 1.56, 0.64, 1); // 轻弹性
+$duration-fast: 0.2s;
+$duration-base: 0.3s;
+$duration-slow: 0.4s;
+
+/* ============================================================
+ * uni-app 内置兼容变量（保留，避免框架组件样式断裂）
+ * ============================================================ */
+$uni-color-primary: $primary-color;
+$uni-color-success: $success-color;
+$uni-color-warning: $warning-color;
+$uni-color-error: $danger-color;
+
+$uni-text-color: $text-primary;
+$uni-text-color-inverse: #ffffff;
+$uni-text-color-grey: $text-muted;
+$uni-text-color-placeholder: $text-placeholder;
+$uni-text-color-disable: #c0c0c0;
+
+$uni-bg-color: $bg-primary;
+$uni-bg-color-grey: #f8f8f8;
+$uni-bg-color-hover: #f1f1f1;
+$uni-bg-color-mask: rgba(45, 30, 20, 0.45);  // 暖调遮罩（原纯黑偏冷）
+
+$uni-border-color: rgba(141, 75, 0, 0.1);
+
+$uni-font-size-sm: 24rpx;
+$uni-font-size-base: 28rpx;
+$uni-font-size-lg: 32rpx;
+
+$uni-border-radius-sm: 16rpx;
+$uni-border-radius-base: 24rpx;
+$uni-border-radius-lg: 32rpx;
+$uni-border-radius-circle: 50%;
+
+$uni-spacing-row-sm: 10rpx;
+$uni-spacing-row-base: 20rpx;
+$uni-spacing-row-lg: 30rpx;
+
+$uni-spacing-col-sm: 8rpx;
+$uni-spacing-col-base: 16rpx;
+$uni-spacing-col-lg: 24rpx;
+
+/* ============================================================
+ * 鸿蒙通用 Mixin
+ * ============================================================ */
+@mixin flex-center {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+@mixin flex-between {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+// 鸿蒙暖调磨砂卡片：哑光低透光 + 柔光晕 + 圆润大圆角
+@mixin harmony-card {
+	background: $bg-card;
+	backdrop-filter: $frost-blur;
+	-webkit-backdrop-filter: $frost-blur;
+	border-radius: $radius-2xl;
+	border: $frost-border;
+	box-shadow: $shadow-card;
+}
+
+// 鸿蒙暖调磨砂卡片（强底，用于底栏/导航）
+@mixin harmony-card-strong {
+	background: $bg-card-strong;
+	backdrop-filter: $frost-blur;
+	-webkit-backdrop-filter: $frost-blur;
+	border-radius: $radius-2xl;
+	border: $frost-border-strong;
+	box-shadow: $shadow-md;
+}
+
+// 兼容旧引用 card-base（升级为鸿蒙暖调）
+@mixin card-base {
+	background: $bg-card;
+	backdrop-filter: $frost-blur;
+	-webkit-backdrop-filter: $frost-blur;
+	border-radius: $radius-2xl;
+	border: $frost-border;
+	box-shadow: $shadow-card;
+}
+
+// 鸿蒙暖调按钮：渐变 + 柔光晕 + 圆润
+@mixin harmony-button {
+	background: linear-gradient(135deg, $primary-color 0%, $primary-light 100%);
+	color: $text-inverse;
+	font-weight: 600;
+	border-radius: $radius-2xl;
+	box-shadow: $shadow-btn;
+	transition: transform $duration-base $ease-harmony, box-shadow $duration-base $ease-harmony;
+}
+
+@mixin mask-base {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: $uni-bg-color-mask;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 999;
+}
+
+@mixin text-ellipsis {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+// 鸿蒙按压微动效（统一 :active 反馈）
+@mixin harmony-pressable {
+	transition: transform $duration-base $ease-harmony, box-shadow $duration-base $ease-harmony;
+	&:active {
+		transform: scale(0.97);
+	}
+}

@@ -1,0 +1,15 @@
+{
+  "pages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "肠健康",
+    "navigationBarBackgroundColor": "#fef8f3",
+    "backgroundColor": "#fef8f3"
+  },
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "肠健康",
+    "navigationBarBackgroundColor": "#fef8f3",
+    "backgroundColor": "#fef8f3"
+  }
+}

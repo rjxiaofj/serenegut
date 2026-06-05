@@ -1,0 +1,13 @@
+/serenegut-C/node_modules/
+/serenegut-admin/node_modules/
+/serenegut-C/unpackage/
+/serenegut-admin/unpackage/
+/serenegut-C/dist/
+/serenegut-admin/dist/
+/serenegut-C/.hbuilderx/
+/serenegut-admin/.hbuilderx/
+/serenegut-C/.uploads/
+/serenegut-admin/.uploads/
+/serenegut-C/local/
+.DS_Store
+*.log
