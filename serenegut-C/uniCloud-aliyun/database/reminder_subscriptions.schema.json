@@ -1,0 +1,51 @@
+{
+	"bsonType": "object",
+	"required": ["_id", "user_id"],
+	"permission": {
+		"read": false,
+		"create": false,
+		"update": false,
+		"delete": false
+	},
+	"properties": {
+		"_id": {
+			"description": "记录ID"
+		},
+		"user_id": {
+			"bsonType": "string",
+			"description": "用户ID",
+			"foreignKey": "users._id"
+		},
+		"openid": {
+			"bsonType": "string",
+			"description": "微信openid，用于发送订阅消息"
+		},
+		"reminder_time": {
+			"bsonType": "string",
+			"description": "提醒时间，格式 HH:mm",
+			"defaultValue": "08:30"
+		},
+		"template_id": {
+			"bsonType": "string",
+			"description": "订阅消息模板ID"
+		},
+		"is_active": {
+			"bsonType": "bool",
+			"description": "是否启用提醒",
+			"defaultValue": false
+		},
+		"remaining_count": {
+			"bsonType": "int",
+			"description": "剩余可发送次数（微信一次性订阅每次授权1次）",
+			"defaultValue": 0
+		},
+		"subscribed_at": {
+			"bsonType": "timestamp",
+			"description": "首次订阅时间"
+		},
+		"updated_at": {
+			"bsonType": "timestamp",
+			"description": "最后更新时间"
+		}
+	}
+}

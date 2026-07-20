@@ -1,0 +1,121 @@
+// 文档教程: https://uniapp.dcloud.net.cn/uniCloud/schema
+{
+	"bsonType": "object",
+	"required": [],
+	"permission": {
+		"read": false,
+		"create": false,
+		"update": false,
+		"delete": false
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"nickname": {
+			"bsonType": "string",
+			"description": "用户昵称",
+			"maxLength": 100
+		},
+		"name": {
+			"bsonType": "string",
+			"description": "真实姓名",
+			"maxLength": 100
+		},
+		"avatar_url": {
+			"bsonType": "string",
+			"description": "头像地址",
+			"maxLength": 500,
+			"defaultValue": "https://mp-f42efd9e-c609-4a2c-b2be-ac4ef0aadc6e.cdn.bspapp.com/serenegut_images/user-avatar/default.jpg"
+		},
+		"phone": {
+			"bsonType": "string",
+			"description": "手机号",
+			"maxLength": 20
+		},
+		"email": {
+			"bsonType": "string",
+			"description": "邮箱地址",
+			"maxLength": 200
+		},
+		"email_password": {
+			"bsonType": "string",
+			"description": "邮箱密码哈希（bcrypt加密）",
+			"maxLength": 255
+		},
+		"gender": {
+			"bsonType": "string",
+			"description": "性别：male-男，female-女",
+			"enum": ["male", "female"]
+		},
+		"birthday": {
+			"bsonType": "string",
+			"description": "生日，格式：YYYY-MM-DD",
+			"maxLength": 20
+		},
+		"is_member": {
+			"bsonType": "int",
+			"description": "是否永久会员：0-否，1-是",
+			"defaultValue": 0,
+			"enum": [0, 1]
+		},
+		"member_since": {
+			"bsonType": "date",
+			"description": "成为会员时间"
+		},
+		"wechat_openid": {
+			"bsonType": "string",
+			"description": "微信OpenID",
+			"maxLength": 200
+		},
+		"status": {
+			"bsonType": "int",
+			"description": "账号状态：1-正常，0-禁用",
+			"defaultValue": 1,
+			"enum": [0, 1]
+		},
+		"created_at": {
+			"bsonType": "date",
+			"description": "创建时间",
+			"defaultValue": {
+				"$env": "now"
+			}
+		},
+		"updated_at": {
+			"bsonType": "date",
+			"description": "更新时间",
+			"defaultValue": {
+				"$env": "now"
+			}
+		}
+	},
+	"indexes": [
+		{
+			"name": "idx_wechat_openid",
+			"key": {
+				"wechat_openid": 1
+			},
+			"unique": true
+		},
+		{
+			"name": "idx_phone",
+			"key": {
+				"phone": 1
+			},
+			"unique": true
+		},
+		{
+			"name": "idx_email",
+			"key": {
+				"email": 1
+			},
+			"unique": true
+		},
+		{
+			"name": "idx_is_member",
+			"key": {
+				"is_member": 1
+			}
+		}
+	]
+}

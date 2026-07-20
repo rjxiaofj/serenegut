@@ -1,0 +1,81 @@
+// 文档教程: https://uniapp.dcloud.net.cn/uniCloud/schema
+{
+	"bsonType": "object",
+	"required": ["user_id", "type", "feeling"],
+	"permission": {
+		"read": false,
+		"create": false,
+		"update": false,
+		"delete": false
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"user_id": {
+			"bsonType": "string",
+			"description": "关联用户ID（users表的_id）",
+			"ref": "users"
+		},
+		"type": {
+			"bsonType": "int",
+			"description": "粪便类型（1-7，布里斯托大便分类法）",
+			"minimum": 1,
+			"maximum": 7
+		},
+		"color": {
+			"bsonType": "string",
+			"description": "颜色（棕色、深棕色、黑色、红色等）",
+			"maxLength": 50
+		},
+		"feeling": {
+			"bsonType": "string",
+			"description": "排便感受：smooth-顺畅，effortful-费力，diarrhea-腹泻感",
+			"enum": ["smooth", "effortful", "diarrhea"]
+		},
+		"note": {
+			"bsonType": "string",
+			"description": "备注",
+			"maxLength": 500
+		},
+		"duration": {
+			"bsonType": "int",
+			"description": "蹲坑时长（秒）",
+			"minimum": 0,
+			"maximum": 7200
+		},
+		"is_menstruation": {
+			"bsonType": "bool",
+			"description": "是否处于生理期",
+			"defaultValue": false
+		},
+		"created_at": {
+			"bsonType": "date",
+			"description": "记录时间",
+			"defaultValue": {
+				"$env": "now"
+			}
+		}
+	},
+	"indexes": [
+		{
+			"name": "idx_user_id",
+			"key": {
+				"user_id": 1
+			}
+		},
+		{
+			"name": "idx_created_at",
+			"key": {
+				"created_at": 1
+			}
+		},
+		{
+			"name": "idx_user_created",
+			"key": {
+				"user_id": 1,
+				"created_at": -1
+			}
+		}
+	]
+}

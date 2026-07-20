@@ -1,0 +1,64 @@
+{
+	"bsonType": "object",
+	"required": ["user_id", "provider"],
+	"permission": {
+		"read": false,
+		"create": false,
+		"update": false,
+		"delete": false
+	},
+	"properties": {
+		"_id": {
+			"description": "设备记录ID"
+		},
+		"user_id": {
+			"bsonType": "string",
+			"description": "用户ID",
+			"foreignKey": "users._id"
+		},
+		"provider": {
+			"bsonType": "string",
+			"description": "设备平台：huawei"
+		},
+		"provider_name": {
+			"bsonType": "string",
+			"description": "平台名称"
+		},
+		"device_name": {
+			"bsonType": "string",
+			"description": "设备名称"
+		},
+		"access_token": {
+			"bsonType": "string",
+			"description": "华为 Health Kit access_token"
+		},
+		"refresh_token": {
+			"bsonType": "string",
+			"description": "华为 Health Kit refresh_token"
+		},
+		"expires_at": {
+			"bsonType": "long",
+			"description": "access_token 过期时间戳（毫秒）"
+		},
+		"scope": {
+			"bsonType": "string",
+			"description": "用户授权的数据权限"
+		},
+		"status": {
+			"bsonType": "string",
+			"description": "连接状态：connected"
+		},
+		"auth_state": {
+			"bsonType": "string",
+			"description": "授权 state"
+		},
+		"bound_at": {
+			"bsonType": "timestamp",
+			"description": "绑定时间"
+		},
+		"last_sync_at": {
+			"bsonType": "timestamp",
+			"description": "最近同步时间"
+		}
+	}
+}

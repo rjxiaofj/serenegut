@@ -1,0 +1,72 @@
+{
+	"bsonType": "object",
+	"required": ["user_id", "report_date", "score"],
+	"permission": {
+		"read": true,
+		"create": false,
+		"update": false,
+		"delete": false
+	},
+	"properties": {
+		"_id": { "description": "报告ID" },
+		"user_id": {
+			"bsonType": "string",
+			"description": "用户ID"
+		},
+		"report_date": {
+			"bsonType": "string",
+			"description": "报告日期 YYYY-MM-DD（每天只生成一次）"
+		},
+		"week_start": {
+			"bsonType": "string",
+			"description": "本周一日期"
+		},
+		"week_end": {
+			"bsonType": "string",
+			"description": "本周日日期"
+		},
+		"score": {
+			"bsonType": "int",
+			"description": "综合健康评分 0-100"
+		},
+		"weekly_data": {
+			"bsonType": "array",
+			"description": "每日评分 [{day, value, fullDate}]"
+		},
+		"average_frequency": {
+			"bsonType": "double",
+			"description": "平均排便频率 次/天"
+		},
+		"qualified_days": {
+			"bsonType": "int",
+			"description": "达标天数"
+		},
+		"score_trend": {
+			"bsonType": "string",
+			"description": "评分趋势文字"
+		},
+		"user_ranking": {
+			"bsonType": "string",
+			"description": "用户排名描述"
+		},
+		"ai_summary": {
+			"bsonType": "string",
+			"description": "AI周度总结"
+		},
+		"ai_summary_tags": {
+			"bsonType": "array",
+			"description": "AI标签数组"
+		},
+		"metrics": {
+			"bsonType": "array",
+			"description": "健康指标 [{icon, value, label, percent, color}]"
+		},
+		"tips": {
+			"bsonType": "array",
+			"description": "个性化建议 [{title, desc, emoji, color, action}]"
+		},
+		"created_at": {
+			"bsonType": "timestamp"
+		}
+	}
+}

@@ -1,0 +1,57 @@
+{
+	"bsonType": "object",
+	"required": ["_id", "name", "provider", "api_url", "model"],
+	"permission": {
+		"read": false,
+		"create": false,
+		"update": false,
+		"delete": false
+	},
+	"properties": {
+		"_id": {
+			"description": "模型配置ID"
+		},
+		"name": {
+			"bsonType": "string",
+			"description": "模型显示名称，如 DeepSeek Chat、GPT-4o",
+			"trim": "both"
+		},
+		"provider": {
+			"bsonType": "string",
+			"description": "AI服务商：deepseek / openai / custom",
+			"enum": ["deepseek", "openai", "custom"]
+		},
+		"api_url": {
+			"bsonType": "string",
+			"description": "API请求地址",
+			"trim": "both"
+		},
+		"api_key": {
+			"bsonType": "string",
+			"description": "API密钥"
+		},
+		"model": {
+			"bsonType": "string",
+			"description": "模型标识符，如 deepseek-chat、gpt-4o",
+			"trim": "both"
+		},
+		"is_active": {
+			"bsonType": "bool",
+			"description": "是否为当前启用的模型（同一时间仅一个为true）",
+			"defaultValue": false
+		},
+		"sort": {
+			"bsonType": "int",
+			"description": "排序权重，数字越小越靠前",
+			"defaultValue": 0
+		},
+		"created_at": {
+			"bsonType": "timestamp",
+			"description": "创建时间"
+		},
+		"updated_at": {
+			"bsonType": "timestamp",
+			"description": "最后修改时间"
+		}
+	}
+}

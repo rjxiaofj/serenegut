@@ -1,0 +1,217 @@
+{
+	"bsonType": "object",
+	"required": ["title", "author_id", "content", "status"],
+	"permission": {
+		"read": true,
+		"create": false,
+		"update": false,
+		"delete": false
+	},
+	"properties": {
+		"_id": {
+			"description": "文章ID"
+		},
+		"title": {
+			"bsonType": "string",
+			"description": "标题",
+			"maxLength": 500
+		},
+		"short_title": {
+			"bsonType": "string",
+			"description": "短标题（列表页展示用）",
+			"maxLength": 100
+		},
+		"summary": {
+			"bsonType": "string",
+			"description": "摘要",
+			"maxLength": 1000
+		},
+		"content": {
+			"bsonType": "string",
+			"description": "正文HTML，内嵌<img>标签实现图文穿插",
+			"maxLength": 100000
+		},
+		"content_images": {
+			"bsonType": "array",
+			"description": "内文图片清单（从content中提取，便于后端管理/CDN同步/图片审核）",
+			"items": {
+				"bsonType": "object",
+				"properties": {
+					"url": {
+						"bsonType": "string",
+						"description": "图片URL或fileID"
+					},
+					"alt": {
+						"bsonType": "string",
+						"description": "图片描述"
+					},
+					"sort": {
+						"bsonType": "int",
+						"description": "在文中的顺序"
+					}
+				}
+			}
+		},
+		"cover_image": {
+			"bsonType": "string",
+			"description": "封面图URL或fileID"
+		},
+		"author_id": {
+			"bsonType": "string",
+			"description": "作者ID"
+		},
+		"author_name": {
+			"bsonType": "string",
+			"description": "作者昵称（冗余字段，避免join查询）"
+		},
+		"author_avatar": {
+			"bsonType": "string",
+			"description": "作者头像URL（冗余字段）"
+		},
+		"category_id": {
+			"bsonType": "string",
+			"description": "分类ID"
+		},
+		"category_name": {
+			"bsonType": "string",
+			"description": "分类名称（冗余字段，避免join查询）"
+		},
+		"tags": {
+			"bsonType": "array",
+			"items": {
+				"bsonType": "string"
+			},
+			"description": "标签数组"
+		},
+		"word_count": {
+			"bsonType": "int",
+			"defaultValue": 0,
+			"description": "文章字数（后端写入时自动统计）"
+		},
+		"reading_time": {
+			"bsonType": "int",
+			"defaultValue": 1,
+			"description": "预计阅读时间（分钟，按300字/分钟计算）"
+		},
+
+		"view_count": {
+			"bsonType": "int",
+			"minimum": 0,
+			"defaultValue": 0
+		},
+		"like_count": {
+			"bsonType": "int",
+			"minimum": 0,
+			"defaultValue": 0
+		},
+		"comment_count": {
+			"bsonType": "int",
+			"minimum": 0,
+			"defaultValue": 0
+		},
+		"share_count": {
+			"bsonType": "int",
+			"minimum": 0,
+			"defaultValue": 0
+		},
+		"favorite_count": {
+			"bsonType": "int",
+			"defaultValue": 0,
+			"description": "收藏数"
+		},
+
+		"like_user_ids": {
+			"bsonType": "array",
+			"items": {
+				"bsonType": "string"
+			},
+			"description": "点赞用户ID列表（用于去重和取消点赞）"
+		},
+		"favorite_user_ids": {
+			"bsonType": "array",
+			"items": {
+				"bsonType": "string"
+			},
+			"description": "收藏用户ID列表"
+		},
+
+		"status": {
+			"bsonType": "int",
+			"description": "0草稿 1发布 2删除 3审核中 4审核拒绝",
+			"minimum": 0,
+			"maximum": 4,
+			"defaultValue": 0
+		},
+		"audit_msg": {
+			"bsonType": "string",
+			"description": "审核备注/拒绝原因"
+		},
+
+		"is_top": {
+			"bsonType": "bool",
+			"defaultValue": false
+		},
+		"top_level": {
+			"bsonType": "int",
+			"defaultValue": 0,
+			"description": "置顶权重 0普通 1置顶 2首页置顶"
+		},
+		"is_recommend": {
+			"bsonType": "bool",
+			"defaultValue": false
+		},
+		"recommend_level": {
+			"bsonType": "int",
+			"defaultValue": 0,
+			"description": "推荐权重"
+		},
+		"is_comment": {
+			"bsonType": "bool",
+			"defaultValue": true,
+			"description": "是否允许评论"
+		},
+
+		"create_time": {
+			"bsonType": "timestamp"
+		},
+		"update_time": {
+			"bsonType": "timestamp"
+		},
+		"publish_time": {
+			"bsonType": "timestamp"
+		},
+		"delete_time": {
+			"bsonType": "timestamp"
+		},
+
+		"seo_title": {
+			"bsonType": "string"
+		},
+		"seo_keywords": {
+			"bsonType": "string"
+		},
+		"seo_description": {
+			"bsonType": "string",
+			"maxLength": 500
+		},
+
+		"source": {
+			"bsonType": "string",
+			"description": "来源：原创/转载/爬虫/管理员"
+		},
+		"source_url": {
+			"bsonType": "string",
+			"description": "原文链接"
+		},
+		"format_type": {
+			"bsonType": "int",
+			"defaultValue": 0,
+			"description": "内容格式：0富文本HTML 1markdown 2小程序原生"
+		},
+
+		"delete_reason": {
+			"bsonType": "string",
+			"description": "删除原因"
+		}
+	}
+}

@@ -1,0 +1,64 @@
+{
+	"bsonType": "object",
+	"required": ["article_id", "user_id", "content"],
+	"properties": {
+		"_id": {},
+		"article_id": {
+			"bsonType": "string",
+			"description": "文章ID"
+		},
+		"user_id": {
+			"bsonType": "string",
+			"description": "评论者ID"
+		},
+		"reply_id": {
+			"bsonType": "string",
+			"description": "回复的评论ID（可空）"
+		},
+		"reply_user_id": {
+			"bsonType": "string",
+			"description": "回复的用户ID"
+		},
+		"root_id": {
+			"bsonType": "string",
+			"description": "顶级评论ID（非空表示是子回复，用于一次查询拉取整个评论树）"
+		},
+		"content": {
+			"bsonType": "string",
+			"description": "评论内容",
+			"maxLength": 2000
+		},
+		"like_count": {
+			"bsonType": "int",
+			"defaultValue": 0
+		},
+		"like_user_ids": {
+			"bsonType": "array",
+			"items": {
+				"bsonType": "string"
+			},
+			"description": "点赞用户ID列表（用于去重和取消点赞）"
+		},
+		"status": {
+			"bsonType": "int",
+			"defaultValue": 1,
+			"description": "0待审核 1正常 2删除 3屏蔽"
+		},
+		"create_time": {
+			"bsonType": "timestamp"
+		},
+		"update_time": {
+			"bsonType": "timestamp",
+			"description": "最后编辑时间"
+		},
+		"delete_time": {
+			"bsonType": "timestamp"
+		},
+		"ip": {
+			"bsonType": "string"
+		},
+		"device": {
+			"bsonType": "string"
+		}
+	}
+}
