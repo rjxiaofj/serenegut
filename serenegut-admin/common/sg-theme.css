@@ -1,0 +1,728 @@
+/* ============================================================
+ * Serene Gut Admin · HarmonyOS 温润暖调设计体系
+ * 适配 uni-app H5 后台管理系统
+ * ============================================================ */
+
+:root {
+  --primary: #8d4b00;
+  --primary-light: #b15f00;
+  --primary-soft: #ffdcc3;
+  --primary-veil: rgba(141, 75, 0, 0.08);
+  --secondary: #9a4614;
+  --tertiary: #864d31;
+
+  --text-primary: #2a1f15;
+  --text-secondary: #554336;
+  --text-muted: #887364;
+  --text-inverse: #ffffff;
+  --text-placeholder: #b3a394;
+
+  --bg-base: #fef8f3;
+  --bg-soft: #fbf2ea;
+  --bg-card: rgba(255, 249, 240, 0.82);
+  --bg-card-strong: #fefaf3;
+  --bg-white: #ffffff;
+  --bg-veil: rgba(255, 255, 255, 0.5);
+  --bg-sidebar: #ffffff;
+
+  --ambient-warm-1: rgba(255, 219, 203, 0.55);
+  --ambient-warm-2: rgba(255, 220, 195, 0.40);
+  --ambient-warm-3: rgba(255, 235, 215, 0.50);
+
+  --danger: #c0533c;
+  --warning: #d99441;
+  --success: #6b9e5e;
+  --info: #5b8aa8;
+  --danger-soft: rgba(192, 83, 60, 0.10);
+  --warning-soft: rgba(217, 148, 65, 0.12);
+  --success-soft: rgba(107, 158, 94, 0.12);
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-2xl: 28px;
+  --radius-full: 9999px;
+
+  --shadow-sm: 0 2px 8px rgba(146, 64, 14, 0.06);
+  --shadow-md: 0 4px 16px rgba(146, 64, 14, 0.08);
+  --shadow-card: 0 4px 20px rgba(141, 75, 0, 0.10), 0 1px 4px rgba(146, 64, 14, 0.05);
+  --shadow-float: 0 8px 28px rgba(141, 75, 0, 0.14), 0 2px 6px rgba(146, 64, 14, 0.06);
+  --shadow-modal: 0 12px 40px rgba(146, 64, 14, 0.18), 0 4px 12px rgba(141, 75, 0, 0.08);
+  --shadow-btn: 0 4px 12px rgba(141, 75, 0, 0.20), 0 1px 3px rgba(141, 75, 0, 0.12);
+
+  --grad-primary: linear-gradient(135deg, #8d4b00 0%, #b15f00 100%);
+
+  --ease-harmony: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ===================== 全局重置 ===================== */
+page {
+  background-color: var(--bg-base);
+  font-family: "HarmonyOS Sans", "Lexend", -apple-system, BlinkMacSystemFont,
+               "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 多层暖色径向渐变环境光 */
+uni-page-body {
+  background-image:
+    radial-gradient(circle at 50% -8%, var(--ambient-warm-1) 0%, transparent 58%),
+    radial-gradient(circle at 12% 18%, rgba(255, 220, 195, 0.32) 0%, transparent 46%),
+    radial-gradient(circle at 88% 26%, rgba(255, 235, 215, 0.28) 0%, transparent 50%),
+    linear-gradient(180deg, rgba(255, 244, 233, 0.4) 0%, rgba(254, 248, 243, 0) 38%);
+}
+
+/* ===================== 滚动条（暖调） ===================== */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(141, 75, 0, 0.18);
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover { background: rgba(141, 75, 0, 0.32); }
+
+/* ===================== 磨砂卡片 ===================== */
+.glass-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(20px) saturate(1.08);
+  -webkit-backdrop-filter: blur(20px) saturate(1.08);
+  border: 1px solid rgba(255, 220, 195, 0.45);
+  box-shadow: var(--shadow-card);
+  border-radius: var(--radius-xl);
+}
+
+.glass-bar {
+  background: var(--bg-card-strong);
+  backdrop-filter: blur(20px) saturate(1.08);
+  -webkit-backdrop-filter: blur(20px) saturate(1.08);
+  border-bottom: 1px solid rgba(255, 220, 195, 0.4);
+  box-shadow: 0 2px 10px rgba(146, 64, 14, 0.05);
+}
+
+/* ===================== 按钮系统 ===================== */
+.sg-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 18px;
+  border: none;
+  border-radius: var(--radius-full);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.3s var(--ease-harmony), box-shadow 0.3s var(--ease-harmony), background 0.2s;
+  white-space: nowrap;
+  user-select: none;
+  line-height: 1.5;
+}
+.sg-btn:active { transform: scale(0.97); }
+
+.sg-btn-primary {
+  background: var(--grad-primary);
+  color: var(--text-inverse);
+  box-shadow: var(--shadow-btn);
+}
+.sg-btn-primary:hover { box-shadow: 0 6px 16px rgba(141, 75, 0, 0.28); }
+
+.sg-btn-ghost {
+  background: var(--bg-veil);
+  color: var(--text-secondary);
+  border: 1px solid rgba(255, 220, 195, 0.5);
+}
+.sg-btn-ghost:hover { background: var(--primary-soft); color: var(--primary); }
+
+.sg-btn-danger {
+  background: var(--danger-soft);
+  color: var(--danger);
+  border: 1px solid rgba(192, 83, 60, 0.2);
+}
+.sg-btn-danger:hover { background: var(--danger); color: #fff; }
+
+.sg-btn-sm { padding: 5px 12px; font-size: 13px; }
+
+/* ===================== 表单控件 ===================== */
+.sg-input, .sg-select, .sg-textarea {
+  width: 100%;
+  padding: 9px 14px;
+  background: var(--bg-veil);
+  border: 1px solid rgba(255, 220, 195, 0.5);
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  color: var(--text-primary);
+  transition: border 0.2s, box-shadow 0.2s;
+  outline: none;
+  font-family: inherit;
+}
+.sg-input::placeholder, .sg-textarea::placeholder { color: var(--text-placeholder); }
+.sg-input:focus, .sg-select:focus, .sg-textarea:focus {
+  border-color: var(--primary-light);
+  box-shadow: 0 0 0 3px rgba(141, 75, 0, 0.10);
+  background: #fff;
+}
+.sg-textarea { resize: vertical; min-height: 80px; }
+
+/* ===================== 表格 ===================== */
+.sg-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.sg-table th {
+  text-align: left;
+  padding: 14px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+  border-bottom: 1px solid rgba(255, 220, 195, 0.5);
+  white-space: nowrap;
+}
+.sg-table td {
+  padding: 14px 16px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  border-bottom: 1px solid rgba(255, 220, 195, 0.28);
+}
+.sg-table tbody tr { transition: background 0.2s; }
+.sg-table tbody tr:hover { background: var(--primary-veil); }
+
+/* ===================== 标签 ===================== */
+.sg-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 500;
+}
+.sg-tag-primary { background: var(--primary-soft); color: var(--primary); }
+.sg-tag-success { background: var(--success-soft); color: var(--success); }
+.sg-tag-warning { background: var(--warning-soft); color: var(--warning); }
+.sg-tag-danger  { background: var(--danger-soft); color: var(--danger); }
+.sg-tag-muted   { background: rgba(136, 115, 100, 0.12); color: var(--text-muted); }
+
+/* ===================== 分页 ===================== */
+.sg-pagination {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  justify-content: flex-end;
+}
+.sg-page-btn {
+  min-width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 220, 195, 0.5);
+  background: var(--bg-veil);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--text-secondary);
+  transition: all 0.2s;
+}
+.sg-page-btn:hover { border-color: var(--primary-light); color: var(--primary); }
+.sg-page-btn.active {
+  background: var(--grad-primary);
+  color: #fff;
+  border: none;
+  box-shadow: var(--shadow-btn);
+}
+
+/* ===================== 动画 ===================== */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes breathing-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(141, 75, 0, 0.18), 0 4px 16px rgba(141, 75, 0, 0.12); }
+  50%      { box-shadow: 0 0 12px 4px rgba(177, 95, 0, 0.16), 0 6px 20px rgba(141, 75, 0, 0.16); }
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.fade-in-up { animation: fadeInUp 0.5s var(--ease-harmony) both; }
+.scale-in   { animation: scaleIn 0.4s var(--ease-spring) both; }
+
+/* ===================== 工具类 ===================== */
+.flex { display: flex; }
+.flex-center { display: flex; align-items: center; justify-content: center; }
+.flex-between { display: flex; align-items: center; justify-content: space-between; }
+.gap-sm { gap: 8px; }
+.gap-md { gap: 12px; }
+.mt-sm { margin-top: 8px; }
+.mt-md { margin-top: 16px; }
+.mt-lg { margin-top: 24px; }
+.text-muted { color: var(--text-muted); }
+.text-primary { color: var(--primary); }
+.text-danger { color: var(--danger); }
+.text-success { color: var(--success); }
+.fw-600 { font-weight: 600; }
+
+/* 加载指示器 */
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(141, 75, 0, 0.18);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+/* 刷新按钮旋转动画 */
+.btn-spinning {
+  opacity: 0.7 !important;
+  pointer-events: none !important;
+  animation: btn-pulse 1.2s ease-in-out infinite;
+}
+@keyframes btn-pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.9; }
+}
+
+/* 暖色调覆盖 uni-ui 组件 */
+uni-button[type="primary"] {
+  background-color: var(--primary) !important;
+  border-color: var(--primary) !important;
+}
+
+/* ============================================================
+ * uni-admin 系统页面样式覆盖
+ * 让菜单管理、角色管理、权限管理、管理员用户页面
+ * 与全局 HarmonyOS 暖调设计体系保持一致
+ * ============================================================ */
+
+/* 面包屑隐藏 */
+.uni-stat-breadcrumb {
+  display: none !important;
+}
+
+/* 页面最外层容器（H5 由 App.vue 统一提供 24px 页边距） */
+.fix-top-window {
+  width: 100%;
+  padding: 24px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  box-sizing: border-box;
+}
+
+/* 业务页面统一容器：18px 卡片间距，内容随窗口自适应铺满 */
+.page-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+/* 顶部操作栏 → 磨砂卡片 */
+.fix-top-window .uni-header {
+  background: var(--bg-card) !important;
+  backdrop-filter: blur(20px) saturate(1.08) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(1.08) !important;
+  border: 1px solid rgba(255, 220, 195, 0.45) !important;
+  border-radius: var(--radius-xl) !important;
+  box-shadow: var(--shadow-card) !important;
+  padding: 16px 20px !important;
+  margin-bottom: 18px !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 12px !important;
+}
+.fix-top-window .uni-header .uni-group {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  flex-wrap: wrap !important;
+}
+
+/* 内容容器 */
+.fix-top-window .uni-container {
+  background: var(--bg-card) !important;
+  backdrop-filter: blur(20px) saturate(1.08) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(1.08) !important;
+  border: 1px solid rgba(255, 220, 195, 0.45) !important;
+  border-radius: var(--radius-xl) !important;
+  box-shadow: var(--shadow-card) !important;
+  padding: 24px !important;
+  overflow: hidden;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* ===================== 按钮全面覆盖 ===================== */
+.fix-top-window uni-button,
+.fix-top-window .uni-button {
+  border-radius: var(--radius-full) !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  height: 32px !important;
+  line-height: 32px !important;
+  padding: 0 16px !important;
+  margin: 0 !important;
+  margin-left: 0 !important;
+  transition: all 0.25s var(--ease-harmony) !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+.fix-top-window uni-button:active,
+.fix-top-window .uni-button:active {
+  transform: scale(0.96) !important;
+}
+/* primary 按钮：渐变主色，无方框 */
+.fix-top-window uni-button[type="primary"],
+.fix-top-window .uni-button[type="primary"] {
+  background: var(--grad-primary) !important;
+  color: #fff !important;
+  border: none !important;
+  box-shadow: 0 2px 8px rgba(141, 75, 0, 0.25) !important;
+}
+.fix-top-window uni-button[type="primary"]:hover,
+.fix-top-window .uni-button[type="primary"]:hover {
+  opacity: 0.92 !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px rgba(141, 75, 0, 0.35) !important;
+}
+/* plain primary 按钮：透明背景 + 暖色边框 */
+.fix-top-window uni-button[type="primary"][plain],
+.fix-top-window .uni-button[type="primary"][plain] {
+  background: var(--primary-veil) !important;
+  color: var(--primary) !important;
+  border: 1px solid var(--primary-light) !important;
+  box-shadow: none !important;
+}
+.fix-top-window uni-button[type="primary"][plain]:hover,
+.fix-top-window .uni-button[type="primary"][plain]:hover {
+  background: var(--primary) !important;
+  color: #fff !important;
+}
+/* warn 按钮 */
+.fix-top-window uni-button[type="warn"],
+.fix-top-window .uni-button[type="warn"] {
+  background: var(--danger) !important;
+  color: #fff !important;
+  border: none !important;
+}
+.fix-top-window uni-button[type="warn"][plain],
+.fix-top-window .uni-button[type="warn"][plain] {
+  background: rgba(192, 83, 60, 0.08) !important;
+  color: var(--danger) !important;
+  border: 1px solid rgba(192, 83, 60, 0.4) !important;
+}
+/* default / plain 按钮：去掉方框背景 */
+.fix-top-window uni-button[type="default"],
+.fix-top-window .uni-button[type="default"],
+.fix-top-window uni-button[plain],
+.fix-top-window .uni-button[plain],
+.fix-top-window .uni-button {
+  background: var(--bg-veil) !important;
+  color: var(--text-secondary) !important;
+  border: 1px solid rgba(255, 220, 195, 0.5) !important;
+}
+.fix-top-window uni-button[type="default"]:hover,
+.fix-top-window .uni-button[type="default"]:hover,
+.fix-top-window .uni-button:hover {
+  border-color: var(--primary-light) !important;
+  color: var(--primary) !important;
+  background: var(--primary-veil) !important;
+}
+/* mini 按钮 */
+.fix-top-window uni-button[size="mini"],
+.fix-top-window .uni-button[size="mini"] {
+  height: 28px !important;
+  line-height: 28px !important;
+  padding: 0 12px !important;
+  font-size: 12px !important;
+}
+
+/* ===================== 搜索框 ===================== */
+.fix-top-window .uni-search {
+  height: 34px !important;
+  padding: 0 14px !important;
+  background: var(--bg-veil) !important;
+  border: 1px solid rgba(255, 220, 195, 0.5) !important;
+  border-radius: var(--radius-md) !important;
+  font-size: 14px !important;
+  color: var(--text-primary) !important;
+  outline: none !important;
+  transition: border 0.2s, box-shadow 0.2s !important;
+}
+.fix-top-window .uni-search:focus {
+  border-color: var(--primary-light) !important;
+  box-shadow: 0 0 0 3px rgba(141, 75, 0, 0.10) !important;
+  background: #fff !important;
+}
+
+/* ===================== Tab 切换栏 ===================== */
+.fix-top-window .uni-tabs__header {
+  background: var(--bg-card) !important;
+  backdrop-filter: blur(20px) saturate(1.08) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(1.08) !important;
+  border: 1px solid rgba(255, 220, 195, 0.45) !important;
+  border-radius: var(--radius-xl) !important;
+  box-shadow: var(--shadow-card) !important;
+  margin-bottom: 18px !important;
+  overflow: hidden;
+}
+.fix-top-window .uni-tabs__nav-wrap {
+  padding: 0 12px !important;
+}
+.fix-top-window .uni-tabs__nav {
+  display: flex !important;
+}
+.fix-top-window .uni-tabs__item {
+  padding: 14px 24px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: var(--text-muted) !important;
+  transition: color 0.2s, background 0.2s !important;
+  border-bottom: 2px solid transparent !important;
+  cursor: pointer !important;
+}
+.fix-top-window .uni-tabs__item:hover {
+  color: var(--primary) !important;
+  background: var(--primary-veil) !important;
+}
+.fix-top-window .uni-tabs__item.is-active {
+  color: var(--primary) !important;
+  border-bottom-color: var(--primary) !important;
+  font-weight: 600 !important;
+}
+
+/* ===================== 表格彻底重写 ===================== */
+
+/* 表格整体容器 */
+.fix-top-window uni-table,
+.fix-top-window .uni-table {
+  background: transparent !important;
+  font-size: 14px !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  width: 100% !important;
+}
+.fix-top-window uni-table.table-pc,
+.fix-top-window .uni-table.table-pc {
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+/* 表头 */
+.fix-top-window uni-thead,
+.fix-top-window .uni-table-thead {
+  background: var(--bg-soft) !important;
+}
+.fix-top-window uni-th,
+.fix-top-window .uni-table-th {
+  background: var(--bg-soft) !important;
+  color: var(--text-muted) !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+  padding: 16px 18px !important;
+  border-bottom: 2px solid rgba(141, 75, 0, 0.12) !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-top: none !important;
+  text-align: left !important;
+  white-space: nowrap !important;
+}
+.fix-top-window uni-th .cell,
+.fix-top-window .uni-table-th .cell {
+  color: var(--text-muted) !important;
+  font-weight: 600 !important;
+}
+
+/* 表体行 */
+.fix-top-window uni-tr,
+.fix-top-window .uni-table-tr {
+  background: transparent !important;
+  transition: background 0.2s !important;
+  border: none !important;
+}
+/* 斑马纹 */
+.fix-top-window uni-table[stripe] uni-tr:nth-child(even),
+.fix-top-window .uni-table[stripe] .uni-table-tr:nth-child(even) {
+  background: rgba(255, 220, 195, 0.05) !important;
+}
+.fix-top-window uni-tr:hover,
+.fix-top-window .uni-table-tr:hover {
+  background: var(--primary-veil) !important;
+}
+/* 选中行 */
+.fix-top-window uni-tr.is-selected,
+.fix-top-window .uni-table-tr.is-selected {
+  background: var(--primary-veil) !important;
+}
+
+/* 单元格 */
+.fix-top-window uni-td,
+.fix-top-window .uni-table-td {
+  padding: 14px 18px !important;
+  color: var(--text-secondary) !important;
+  font-size: 14px !important;
+  border-bottom: 1px solid rgba(255, 220, 195, 0.2) !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-top: none !important;
+  background: transparent !important;
+}
+.fix-top-window uni-td .cell,
+.fix-top-window .uni-table-td .cell {
+  color: var(--text-secondary) !important;
+}
+
+/* 表格内链接 */
+.fix-top-window uni-td a {
+  color: var(--primary) !important;
+  text-decoration: none !important;
+}
+
+/* 空数据 */
+.fix-top-window .uni-table-empty {
+  color: var(--text-placeholder) !important;
+  padding: 48px 0 !important;
+  text-align: center !important;
+}
+
+/* checkbox 暖调 */
+.fix-top-window .uni-table-checkbox {
+  color: var(--primary) !important;
+}
+
+/* ===================== 分页 ===================== */
+.fix-top-window .uni-pagination-box {
+  padding: 20px 0 8px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 8px !important;
+}
+.fix-top-window .uni-pagination {
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+}
+.fix-top-window .uni-pagination .uni-numbox,
+.fix-top-window .uni-pagination .uni-pagination__num {
+  border-radius: var(--radius-sm) !important;
+  border: 1px solid rgba(255, 220, 195, 0.5) !important;
+  background: var(--bg-card) !important;
+  color: var(--text-secondary) !important;
+  min-width: 32px !important;
+  height: 32px !important;
+  line-height: 32px !important;
+  text-align: center !important;
+  font-size: 13px !important;
+  cursor: pointer !important;
+  transition: all 0.2s !important;
+}
+.fix-top-window .uni-pagination .uni-numbox:hover,
+.fix-top-window .uni-pagination .uni-pagination__num:hover {
+  border-color: var(--primary-light) !important;
+  background: var(--primary-veil) !important;
+}
+.fix-top-window .uni-pagination .uni-numbox--active,
+.fix-top-window .uni-pagination .uni-pagination__num--active,
+.fix-top-window .uni-pagination .uni-pagination__btn-current {
+  background: var(--grad-primary) !important;
+  color: #fff !important;
+  border: none !important;
+  box-shadow: 0 2px 8px rgba(141, 75, 0, 0.25) !important;
+}
+.fix-top-window .uni-pagination .uni-pagination__btn {
+  color: var(--text-muted) !important;
+  border-radius: var(--radius-sm) !important;
+}
+
+/* ===================== switch 开关 ===================== */
+.fix-top-window uni-switch .uni-switch-input.uni-switch-input-checked {
+  background-color: var(--primary) !important;
+  border-color: var(--primary) !important;
+}
+
+/* ===================== 表单页面 ===================== */
+.fix-top-window .uni-forms {
+  padding: 8px 0 !important;
+}
+.fix-top-window .uni-forms-item__inner {
+  padding: 10px 0 !important;
+}
+.fix-top-window .uni-forms-item__label {
+  color: var(--text-secondary) !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  width: 100px !important;
+}
+.fix-top-window .uni-easyinput__content {
+  border-color: rgba(255, 220, 195, 0.5) !important;
+  border-radius: var(--radius-md) !important;
+  background: var(--bg-veil) !important;
+}
+.fix-top-window .uni-easyinput__content input {
+  color: var(--text-primary) !important;
+  font-size: 14px !important;
+}
+.fix-top-window .uni-easyinput__content:focus-within {
+  border-color: var(--primary-light) !important;
+  box-shadow: 0 0 0 3px rgba(141, 75, 0, 0.10) !important;
+  background: #fff !important;
+}
+.fix-top-window .uni-easyinput__content textarea {
+  color: var(--text-primary) !important;
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+}
+
+/* uni-data-checkbox */
+.fix-top-window .uni-data-checklist .checklist-content .checklist-text {
+  color: var(--text-secondary) !important;
+  font-size: 14px !important;
+}
+.fix-top-window .uni-data-checklist .checklist-content .checklist-inner {
+  color: var(--primary) !important;
+}
+
+/* 弹窗 */
+.fix-top-window .uni-dialog {
+  border-radius: var(--radius-xl) !important;
+}
+.fix-top-window .uni-dialog-title {
+  color: var(--primary) !important;
+  font-size: 17px !important;
+  font-weight: 600 !important;
+}
+.fix-top-window .uni-dialog-content {
+  color: var(--text-secondary) !important;
+}
+
+/* 下拉选择器 */
+.fix-top-window .uni-select {
+  border-color: rgba(255, 220, 195, 0.5) !important;
+  border-radius: var(--radius-md) !important;
+  background: var(--bg-veil) !important;
+}
+.fix-top-window .uni-select .uni-select__input-text {
+  color: var(--text-primary) !important;
+  font-size: 14px !important;
+}
+
+/* 副标题 */
+.fix-top-window .uni-sub-title {
+  color: var(--text-muted) !important;
+  font-size: 13px !important;
+}

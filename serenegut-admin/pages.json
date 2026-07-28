@@ -1,0 +1,330 @@
+{
+  "pages": [
+    //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+    {
+      "path": "pages/index/index",
+      "style": {
+        "navigationBarTitleText": "数据总览"
+      }
+    },
+    {
+      "path": "pages/error/404",
+      "style": {
+        "navigationBarTitleText": "Not Found"
+      }
+    },
+    {
+      "path": "uni_modules/uni-id-pages/pages/login/login-withpwd",
+      "style": {
+        "topWindow": false,
+        "leftWindow": false,
+        "navigationBarTitleText": "登录"
+      }
+    },
+    {
+      "path": "uni_modules/uni-id-pages/pages/login/login-smscode",
+      "style": {
+        "topWindow": false,
+        "leftWindow": false,
+        "navigationBarTitleText": "手机验证码登录"
+      }
+    },
+    {
+      "path": "uni_modules/uni-id-pages/pages/login/login-withoutpwd",
+      "style": {
+        "topWindow": false,
+        "leftWindow": false,
+        "navigationBarTitleText": "免密登录页"
+      }
+    },
+    {
+      "path": "uni_modules/uni-id-pages/pages/register/register",
+      "style": {
+        "topWindow": false,
+        "leftWindow": false,
+        "navigationBarTitleText": "注册"
+      }
+    },
+    {
+      "path": "uni_modules/uni-id-pages/pages/register/register-admin",
+      "style": {
+        "topWindow": false,
+        "leftWindow": false,
+        "navigationBarTitleText": "创建超级管理员"
+      }
+    },
+    {
+      "path": "uni_modules/uni-id-pages/pages/register/register-by-email",
+      "style": {
+        "topWindow": false,
+        "leftWindow": false,
+        "navigationBarTitleText": "邮箱验证码注册"
+      }
+    },
+    {
+      "path": "uni_modules/uni-id-pages/pages/retrieve/retrieve",
+      "style": {
+        "topWindow": false,
+        "leftWindow": false,
+        "navigationBarTitleText": "重置密码"
+      }
+    },
+    {
+      "path": "uni_modules/uni-id-pages/pages/retrieve/retrieve-by-email",
+      "style": {
+        "topWindow": false,
+        "leftWindow": false,
+        "navigationBarTitleText": "通过邮箱重置密码"
+      }
+    },
+    {
+      "path": "uni_modules/uni-id-pages/pages/userinfo/change_pwd/change_pwd",
+      "style": {
+        "navigationBarTitleText": "修改密码"
+      }
+    },
+    {
+      "path": "uni_modules/uni-id-pages/pages/userinfo/userinfo",
+      "style": {
+        "navigationBarTitleText": "个人资料"
+      }
+    },
+    {
+      "path": "uni_modules/uni-id-pages/pages/userinfo/bind-mobile/bind-mobile",
+      "style": {
+        "navigationBarTitleText": "绑定手机号码"
+      }
+    },
+    {
+      "path": "uni_modules/uni-id-pages/pages/userinfo/cropImage/cropImage",
+      "style": {
+        "navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "uni_modules/uni-id-pages/pages/userinfo/deactivate/deactivate",
+      "style": {
+        "navigationBarTitleText": "注销账号"
+      }
+    },
+    {
+      "path": "uni_modules/uni-id-pages/pages/userinfo/set-pwd/set-pwd",
+      "style": {
+        "enablePullDownRefresh": false,
+        "navigationBarTitleText": "设置密码"
+      }
+    },
+    {
+      "path": "uni_modules/uni-id-pages/pages/userinfo/realname-verify/realname-verify",
+      "style": {
+        "enablePullDownRefresh": false,
+        "navigationBarTitleText": "实名认证"
+      }
+    },
+    {
+      "path": "uni_modules/uni-id-pages/pages/common/webview/webview",
+      "style": {
+        "topWindow": false,
+        "leftWindow": false,
+        "enablePullDownRefresh": false,
+        "navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "uni_modules/uni-upgrade-center/pages/version/list",
+      "style": {
+        "navigationBarTitleText": "版本列表"
+      }
+    },
+    {
+      "path": "uni_modules/uni-upgrade-center/pages/version/add",
+      "style": {
+        "navigationBarTitleText": "新版发布"
+      }
+    },
+    {
+      "path": "uni_modules/uni-upgrade-center/pages/version/detail",
+      "style": {
+        "navigationBarTitleText": "版本信息查看"
+      }
+    }
+  ],
+  "subPackages": [
+    {
+      "root": "pages/business",
+      "pages": [
+        {
+          "path": "users/list",
+          "style": {
+            "navigationBarTitleText": "用户管理"
+          }
+        },
+        {
+          "path": "devices/list",
+          "style": {
+            "navigationBarTitleText": "设备与健康数据"
+          }
+        },
+        {
+          "path": "records/list",
+          "style": {
+            "navigationBarTitleText": "健康记录"
+          }
+        },
+        {
+          "path": "articles/list",
+          "style": {
+            "navigationBarTitleText": "科普文章"
+          }
+        },
+        {
+          "path": "articles/edit",
+          "style": {
+            "navigationBarTitleText": "编辑文章"
+          }
+        },
+        {
+          "path": "rankings/list",
+          "style": {
+            "navigationBarTitleText": "排行榜管理"
+          }
+        },
+        {
+          "path": "settings/list",
+          "style": {
+            "navigationBarTitleText": "系统设置"
+          }
+        },
+        {
+          "path": "ad/list",
+          "style": {
+            "navigationBarTitleText": "广告管理"
+          }
+        },
+        {
+          "path": "cooperation/list",
+          "style": {
+            "navigationBarTitleText": "合作信息"
+          }
+        },
+        {
+          "path": "ranking-notice/list",
+          "style": {
+            "navigationBarTitleText": "跑马灯公告"
+          }
+        }
+      ]
+    },
+    {
+      "root": "pages/system",
+      "pages": [
+        {
+          "path": "menu/list",
+          "style": {
+            "navigationBarTitleText": "菜单管理"
+          }
+        },
+        {
+          "path": "menu/edit",
+          "style": {
+            "navigationBarTitleText": "编辑菜单",
+            "navigationStyle": "default"
+          }
+        },
+        {
+          "path": "announcement/list",
+          "style": {
+            "navigationBarTitleText": "系统公告"
+          }
+        },
+        {
+          "path": "announcement/edit",
+          "style": {
+            "navigationBarTitleText": "编辑公告"
+          }
+        },
+        {
+          "path": "role/list",
+          "style": {
+            "navigationBarTitleText": "角色管理"
+          }
+        },
+        {
+          "path": "role/add",
+          "style": {
+            "navigationBarTitleText": "新增角色",
+            "navigationStyle": "default"
+          }
+        },
+        {
+          "path": "role/edit",
+          "style": {
+            "navigationBarTitleText": "修改角色",
+            "navigationStyle": "default"
+          }
+        },
+        {
+          "path": "user/list",
+          "style": {
+            "navigationBarTitleText": "用户管理"
+          }
+        },
+        {
+          "path": "user/add",
+          "style": {
+            "navigationBarTitleText": "新增用户",
+            "navigationStyle": "default"
+          }
+        },
+        {
+          "path": "user/edit",
+          "style": {
+            "navigationBarTitleText": "修改用户",
+            "navigationStyle": "default"
+          }
+        },
+        {
+          "path": "ai-report/list",
+          "style": {
+            "navigationBarTitleText": "AI报告管理"
+          }
+        },
+        {
+          "path": "ai-report/edit",
+          "style": {
+            "navigationBarTitleText": "编辑AI模型"
+          }
+        }
+      ]
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "Serene Gut 管理系统",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8",
+    "h5": {
+      "titleNView": false
+    }
+  },
+  "topWindow": {
+    "path": "windows/topWindow",
+    "style": {
+      "height": "1px"
+    },
+    "matchMedia": {
+      "minWidth": 0
+    }
+  },
+  "leftWindow": {
+    "path": "windows/leftWindow",
+    "style": {
+      "width": "240px"
+    }
+  },
+  "uniIdRouter": {
+    "loginPage": "uni_modules/uni-id-pages/pages/login/login-withpwd",
+    "needLogin": ["^(?!.*uni-id-pages/pages/(login|register|retrieve)/).*$"],
+    "resToLogin": true
+  }
+}
