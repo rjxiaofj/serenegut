@@ -1,0 +1,5 @@
+{
+	"name": "admin-api",
+	"dependencies": {},
+	"main": "index.js"
+}

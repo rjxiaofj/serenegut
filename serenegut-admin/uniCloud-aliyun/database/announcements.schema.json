@@ -1,0 +1,26 @@
+{
+  "bsonType": "object",
+  "required": ["title", "type"],
+  "permission": {
+    "read": true,
+    "create": false,
+    "update": false,
+    "delete": false
+  },
+  "properties": {
+    "_id": { "description": "ID" },
+    "title": { "bsonType": "string", "description": "公告标题" },
+    "content": { "bsonType": "string", "description": "纯文本内容（兼容旧数据）" },
+    "rich_content": { "bsonType": "string", "description": "富文本HTML内容" },
+    "type": { "bsonType": "string", "enum": ["normal", "ban"], "description": "公告类型：普通公告/封禁公告", "defaultValue": "normal" },
+    "is_active": { "bsonType": "bool", "description": "是否启用", "defaultValue": false },
+    "sort": { "bsonType": "int", "description": "排序权重", "defaultValue": 0 },
+    "ban_duration": { "bsonType": "string", "enum": ["1h", "1d", "1m", "custom", "permanent"], "description": "封禁时长档位" },
+    "ban_custom_hours": { "bsonType": "int", "description": "自定义封禁时长（小时）" },
+    "ban_is_permanent": { "bsonType": "bool", "description": "是否永久封禁", "defaultValue": false },
+    "trigger_frequency": { "bsonType": "string", "enum": ["once", "every_time", "daily", "weekly"], "description": "触发频率：仅读一次/每次进入/每天一次/每周一次", "defaultValue": "once" },
+    "ban_image": { "bsonType": "string", "description": "封禁公告配套图片URL" },
+    "created_at": { "bsonType": "timestamp", "description": "创建时间" },
+    "updated_at": { "bsonType": "timestamp", "description": "更新时间" }
+  }
+}
